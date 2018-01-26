@@ -56,4 +56,50 @@ public class tree {
 		return toReturn;
 	}
 	
+	public node deleteNode(node root,int key) {
+		if(root==null)
+			return root;
+		if(root.data<key)
+			root.right=deleteNode(root.right,key);
+		if(root.data>key)
+			root.left=deleteNode(root.left,key);
+		
+		else {
+			if(root.left==null)
+				return root.right;
+			else if(root.right==null)
+				return root.left;
+			
+			root.data=findSuccesor(root).data;
+			root.right=deleteNode(root.right,root.data);
+		}
+		
+		return root;
+	}
+	
+
+	public node findSuccesor(node toSearch) {
+		node toReturn=toSearch;
+		if(toReturn.right!=null) {
+			toReturn=toReturn.right;
+			while(toReturn.left!=null) {
+				toReturn=toReturn.left;				
+			}
+		}
+		return toReturn;
+	}
+	
+	public node searchNode(int data) {
+		node toReturn=root;
+		while(toReturn!=null) {
+			if(toReturn.data>data)
+				toReturn=root.left;
+			else if(toReturn.data<data)
+				toReturn=toReturn.right;
+			else
+				return  toReturn;
+		}
+		return null;
+	}
+
 }
