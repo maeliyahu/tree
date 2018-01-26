@@ -17,6 +17,9 @@ public class main {
 				System.out.println(firstTree.inOrder(firstTree.root));
 				System.out.println(firstTree.postOrder(firstTree.root));
 				System.out.println(firstTree.preOrder(firstTree.root));
+				//System.out.println(firstTree.findSuccesor(firstTree.root.left).data);	
+				firstTree.deleteNode(firstTree.root,5);
+				System.out.println(firstTree.inOrder(firstTree.root));
 				flag=false;
 			}
 			firstTree.insertNode(num);
